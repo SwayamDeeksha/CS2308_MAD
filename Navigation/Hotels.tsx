@@ -55,34 +55,33 @@ const hotelData = [
     image: 'https://pix10.agoda.net/hotelImages/889/8898/8898_15052116370027673159.jpg?ca=13&ce=1&s=414x232'
   },
   {
-  id: 6,
-  name: 'The Chancery Pavilion',
-  location: 'Bangalore, India',
-  price: '9,500',
-  rating: 4,
-  image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT82CNHmcNg1-9w7pc7mL_duYvrHOMlO6k09g&s'
-},
-{
-  id: 7,
-  name: 'Empire Hotel',
-  location: 'Bangalore, India',
-  price: '3,500',
-  rating: 3,
-  image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeNMUPqa7ghOnVPXFBfC0IQB4L2wD2Ixwdew&s'
-},
-{
-  id: 8,
-  name: 'Holiday Inn Bengaluru Racecourse',
-  location: 'Bangalore, India',
-  price: '8,000',
-  rating: 4,
-  image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_-Au6ryTzjgxcOnbmtGuXq-lAfTsJeNzbvQ&s'
-}
-
+    id: 6,
+    name: 'The Chancery Pavilion',
+    location: 'Bangalore, India',
+    price: '9,500',
+    rating: 4,
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT82CNHmcNg1-9w7pc7mL_duYvrHOMlO6k09g&s'
+  },
+  {
+    id: 7,
+    name: 'Empire Hotel',
+    location: 'Bangalore, India',
+    price: '3,500',
+    rating: 3,
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeNMUPqa7ghOnVPXFBfC0IQB4L2wD2Ixwdew&s'
+  },
+  {
+    id: 8,
+    name: 'Holiday Inn Bengaluru Racecourse',
+    location: 'Bangalore, India',
+    price: '8,000',
+    rating: 4,
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_-Au6ryTzjgxcOnbmtGuXq-lAfTsJeNzbvQ&s'
+  }
 ];
 
 
-  const PaymentScreen: React.FC = () => {
+const PaymentScreen: React.FC = () => {
     return (
       <View style={styles.paymentContainer}>
         <Text style={styles.paymentHeader}>Payment</Text>
