@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .counter {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #f0f0f0;
+            border-radius: 5px;
+        }
+
+        .counter span {
+            font-weight: bold;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .add-bag {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .wishlist {
+            background: #2196F3;
+            color: white;
+        }
+
+        .sale-section {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff9e6;
+            border-radius: 5px;
+        }
+
+        .sale-section h3 {
+            margin-top: 0;
+            font-size: 14px;
+        }
+
+        .sale-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sale-controls button {
+            width: 50px;
+            padding: 10px;
+            font-size: 20px;
+            background: #ff9800;
+            color: white;
+        }
+
+        .sale-controls button:disabled {
+            background: #ccc;
+        }
+
+        .sale-count {
+            font-size: 24px;
+            font-weight: bold;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .message.show {
+            color: red;
+            font-weight: bold;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #333;
+            color: white;
+            padding: 12px 20px;
+            display: none;
+        }
+
+        .notification.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Shopping App</h2>
+        
+        <div class="counter">
+            <span>Bag Items:</span>
+            <span id="bagCount">0</span>
+        </div>
+
+        <div class="counter">
+            <span>Wishlist:</span>
+            <span id="wishlistCount">0</span>
+        </div>
+
+        <button class="add-bag" onclick="addToBag()">Add to Bag</button>
+        
+        <button class="wishlist" onclick="moveToWishlist()">Move to Wishlist</button>
+
+        <div class="sale-section">
+            <h3>Add One + One Sale Items</h3>
+            <div class="sale-controls">
+                <button id="decreaseBtn" onclick="decreaseSale()">-</button>
+                <div class="sale-count" id="saleCount">0</div>
+                <button onclick="increaseSale()">+</button>
+            </div>
+            <div class="message" id="emptyMessage"></div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <script>
+        let bagItems = 0;
+        let wishlistItems = 0;
+        let saleItems = 0;
+
+        function updateDisplay() {
+            document.getElementById('bagCount').textContent = bagItems;
+            document.getElementById('wishlistCount').textContent = wishlistItems;
+            document.getElementById('saleCount').textContent = saleItems;
+            
+            const decreaseBtn = document.getElementById('decreaseBtn');
+            const emptyMessage = document.getElementById('emptyMessage');
+            
+            if (saleItems === 0) {
+                decreaseBtn.disabled = true;
+                emptyMessage.textContent = 'Bag is empty';
+                emptyMessage.classList.add('show');
+            } else {
+                decreaseBtn.disabled = false;
+                emptyMessage.textContent = '';
+                emptyMessage.classList.remove('show');
+            }
+        }
+
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
+        }
+
+        function addToBag() {
+            bagItems++;
+            updateDisplay();
+            showNotification('Item added to bag!');
+        }
+
+        function moveToWishlist() {
+            if (bagItems > 0) {
+                bagItems--;
+                wishlistItems++;
+                updateDisplay();
+                showNotification('Item moved to wishlist!');
+            } else {
+                showNotification('No items in bag!');
+            }
+        }
+
+        function increaseSale() {
+            saleItems++;
+            bagItems++;
+            updateDisplay();
+            showNotification('Sale item added!');
+        }
+
+        function decreaseSale() {
+            if (saleItems > 0) {
+                saleItems--;
+                bagItems--;
+                updateDisplay();
+                showNotification('Item removed!');
+            }
+        }
+
+        updateDisplay();
+    </script>
+</body>
+</html>
