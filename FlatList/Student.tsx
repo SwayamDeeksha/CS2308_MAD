@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, View, Text, FlatList, StyleSheet, StatusBar } from 'react-native';
 
-import studentsData from './data.json';
+import studentsData from './student.json';
 
 interface Student {
   id: number;
