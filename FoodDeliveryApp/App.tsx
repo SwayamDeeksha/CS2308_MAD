@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { SafeAreaView, View, Text, ScrollView, StyleSheet, StatusBar, Dimensions } from 'react-native';
 import menuData from './menu.json';
 
